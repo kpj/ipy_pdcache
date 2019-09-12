@@ -58,3 +58,12 @@ df_new = pd.DataFrame({})
 
     # test that existing data cache was loaded
     assert_frame_equal(ip.user_global_ns['df_new'], df)
+
+
+def test_file_in_directory(ip, tmp_path):
+    fname = tmp_path / 'subdirectory' / 'data.csv'
+
+    ip.run_cell_magic(magic_name='pdcache', line=f'df {fname}', cell="""
+import pandas as pd
+df = pd.DataFrame({'A': [1,2,3], 'B': [4,5,6]})
+    """)

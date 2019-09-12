@@ -9,10 +9,19 @@ from IPython.core.magic_arguments import (
 
 
 def write_data(fname, data):
+    """Save data to file. Create sub-directories as necessary."""
+    if os.sep in fname:
+        # file is in some directory
+        path = os.path.dirname(fname)
+
+        if not os.path.exists(path):
+            os.makedirs(path)
+
     data.to_csv(fname, index=False)
 
 
 def load_data(fname):
+    """Load data from file."""
     return pd.read_csv(fname)
 
 
