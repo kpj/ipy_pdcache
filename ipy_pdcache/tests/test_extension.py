@@ -45,12 +45,12 @@ df = pd.DataFrame({'A': [1,2,3], 'B': [4,5,6]})
 
     # test that data was saved correctly
     assert os.path.exists(fname)
-    df = pd.read_csv(fname)
+    df = pd.read_csv(fname, index_col=0)
     assert_frame_equal(ip.user_global_ns['df'], df)
 
     # modify it, so we can test whether data loading works
     df['B'].iloc[1] = 42
-    df.to_csv(fname, index=False)
+    df.to_csv(fname, index=True)
 
     # load cached data
     ip.run_cell_magic(

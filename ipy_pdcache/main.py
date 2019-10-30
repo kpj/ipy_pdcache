@@ -17,12 +17,12 @@ def write_data(fname, data):
         if not os.path.exists(path):
             os.makedirs(path)
 
-    data.to_csv(fname, index=False)
+    data.to_csv(fname, index=True)
 
 
 def load_data(fname):
     """Load data from file."""
-    return pd.read_csv(fname)
+    return pd.read_csv(fname, index_col=0)
 
 
 @magics_class
