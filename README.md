@@ -29,10 +29,10 @@ In [3]: %%pdcache df data.csv
    ...:
 
 In [4]: !cat data.csv
-A,B
-1,4
-2,5
-3,6
+,A,B
+0,1,4
+1,2,5
+2,3,6
 ```
 
 This will cache the dataframe and automatically load it when re-executing the cell.
