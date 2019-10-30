@@ -50,9 +50,12 @@ class PDCache(Magics):
                 args.variable: data
             })
         else:
-            # execute and cache data
-            ip.run_cell(cell)
+            # execute and cache data (if successful)
+            exec_res = ip.run_cell(cell)
 
-            print('Caching new data')
-            data = ip.user_ns[args.variable]
-            write_data(args.fname, data)
+            if exec_res.success:
+                print('Caching new data')
+                data = ip.user_ns[args.variable]
+                write_data(args.fname, data)
+            else:
+                print('Skip caching due to error')

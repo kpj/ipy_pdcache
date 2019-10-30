@@ -91,3 +91,18 @@ df = pd.DataFrame({'A': [1,2,3], 'B': [4,5,6]})
 
     fname = tmp_path / cache_dir / base_fname
     assert os.path.exists(fname)
+
+
+def test_error_handling(ip, tmp_path):
+    fname = tmp_path / 'data.csv'
+
+    ip.run_cell_magic(
+        magic_name='pdcache', line=f'df {fname}',
+        cell="""
+import pandas as pd
+df = pd.DataFrame({'A': ['oh'], 'B': ['no']})
+
+1/0  # boom
+        """)
+
+    assert not os.path.exists(fname)
