@@ -12,13 +12,13 @@ repository = "https://github.com/kpj/ipy_pdcache"
 
 
 [tool.poetry.dependencies]
-python = "^3.6"
-pandas = "^0.25.1"
-ipython = "^7.8"
+python = ">=3.6"
+pandas = "^1.0.0"
+ipython = "^7.0"
 
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.1"
+pytest = "^6.0.0"
 
 
 [build-system]
