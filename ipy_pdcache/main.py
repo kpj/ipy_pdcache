@@ -2,10 +2,8 @@ import os
 
 import pandas as pd
 
-from IPython.core.magic import (
-    Magics, magics_class, cell_magic)
-from IPython.core.magic_arguments import (
-    argument, magic_arguments, parse_argstring)
+from IPython.core.magic import Magics, magics_class, cell_magic
+from IPython.core.magic_arguments import argument, magic_arguments, parse_argstring
 
 
 def write_data(fname, data):
@@ -28,14 +26,8 @@ def load_data(fname):
 @magics_class
 class PDCache(Magics):
     @magic_arguments()
-    @argument(
-        'variable', type=str,
-        help='Variable to be cached.'
-    )
-    @argument(
-        'fname', type=str,
-        help='File which variable is saved in.'
-    )
+    @argument("variable", type=str, help="Variable to be cached.")
+    @argument("fname", type=str, help="File which variable is saved in.")
     @cell_magic
     def pdcache(self, line, cell):
         """Cache variables to file."""
@@ -44,18 +36,16 @@ class PDCache(Magics):
 
         if os.path.exists(args.fname):
             # load cached data
-            print('Loading data from cache')
+            print("Loading data from cache")
             data = load_data(args.fname)
-            ip.push({
-                args.variable: data
-            })
+            ip.push({args.variable: data})
         else:
             # execute and cache data (if successful)
             exec_res = ip.run_cell(cell)
 
             if exec_res.success:
-                print('Caching new data')
+                print("Caching new data")
                 data = ip.user_ns[args.variable]
                 write_data(args.fname, data)
             else:
-                print('Skip caching due to error')
+                print("Skip caching due to error")
