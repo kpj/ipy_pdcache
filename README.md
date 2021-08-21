@@ -1,7 +1,8 @@
 # %%pdcache cell magic
 
 [![pypi version](https://img.shields.io/pypi/v/ipy-pdcache.svg)](https://pypi.org/project/ipy-pdcache/)
-[![license](https://img.shields.io/pypi/l/ipy-pdcache.svg)](https://pypi.org/project/ipy-pdcache/)
+[![Tests](https://github.com/kpj/ipy_pdcache/workflows/Tests/badge.svg)](https://github.com/kpj/ipy_pdcache/actions)
+
 
 Automatically cache results of intensive computations in IPython.
 
