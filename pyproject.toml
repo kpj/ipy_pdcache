@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ipy_pdcache"
-version = "0.1.0"
+version = "0.1.1"
 description = "Automatically cache results of intensive computations in IPython."
 
 authors = ["kpj <kim.philipp.jablonski@gmail.com>"]
@@ -12,18 +12,18 @@ repository = "https://github.com/kpj/ipy_pdcache"
 
 
 [tool.poetry.dependencies]
-python = "^3.7.1"
-pandas = "^1.3.2"
-ipython = "^7.26.0"
+python = ">=3.10"
+pandas = ">=2.0,<3.0"
+ipython = "^8.16"
 
 
-[tool.poetry.dev-dependencies]
-bump2version = "^1.0.1"
-black = "^23.3"
-pytest = "^6.2.4"
-pytest-markdown = "^1.0.2"
+[poetry.group.dev.dependencies]
+bump2version = "^2.2"
+black = "^24.3"
+pytest = "^7.4"
+pytest-markdown = "^1.0"
 
 
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core>=1.6"]
+build-backend = "poetry.core.masonry.api"
